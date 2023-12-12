@@ -1,0 +1,35 @@
+{% extends 'news/base.html' %}
+{% load static %}
+
+{% block title %}404 | Bo'sh sahifa {% endblock title %}
+{% block content %}
+  <section id="contentSection">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="left_content">
+          <div class="error_page">
+            <h3>Kechirasiz!</h3>
+            <h1>404</h1>
+            <p>Qandaydir xatolik yuz berdi. Afsuski bu sahifa topilmadi. Iltimos bosh sahifaga qayting!</p>
+            <span></span> <a href="{% url 'home' %}" class="wow fadeInLeftBig">Bosh sahifaga qaytish</a> </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <aside class="right_content">
+          <div class="single_sidebar">
+            <h2><span>So'nggi yangiliklar</span></h2>
+            <ul class="spost_nav">
+              {% for new in latest_news %}
+              <li>
+                <div class="media wow fadeInDown"> <a href="{{new.get_absolute_url}}" class="media-left"> <img alt="" src="{{new.image.url}}"> </a>
+                  <div class="media-body"> <a href="{{new.get_absolute_url}}" class="catg_title"> {{new.title}} </a> </div>
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

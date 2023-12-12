@@ -1,0 +1,38 @@
+{% extends 'news/base.html' %}
+{% load static %}
+
+{% block title %}{{ news.title }}{% endblock title %}
+{% block content %}
+<section id="sliderSection">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+         <div class="slick_slider">
+            <h3 class="title_custom">{{news.title}}</h3>
+            <p><i class="fa-regular fa-clock" ></i>  {{news.publish_time}}</p>
+          <div class="single_iteam" style="z-index:100;"> <img src="{{news.image.url}}" alt="{{news.title}}">
+            </div>
+            <p class="body_custom"> {{news.body}}</p>
+        </div> 
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <div class="latest_post">
+          <h2><span>So'nggi yangiliklar</span></h2>
+          <div class="latest_post_container">
+            <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
+            <ul class="latest_postnav">
+             {% for new in latest_news %}
+                <li> 
+                  <div class="media"> <a href="{{new.get_absolute_url}}" class="media-left"> <img alt="" src="{{new.image.url}}"> </a>
+                     <div class="media-body"> <a href="{{new.get_absolute_url}}" class="catg_title">{{new.title}}</a> </div>
+                  </div> 
+                </li>
+              
+             {% endfor %}
+            </ul>
+            <div id="next-button"><i class="fa  fa-chevron-down"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+{% endblock content %}

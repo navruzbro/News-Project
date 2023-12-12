@@ -1,0 +1,42 @@
+{% extends 'news/base.html' %}
+{% load static %}
+
+{% block title %}Xabar.dev | Biz bilan bog'lanish.{% endblock title %}
+
+{% block content %}
+<section id="contentSection">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="left_content">
+          <div class="contact_area">
+            <h2>Biz bilan bog'lanish</h2>
+            <p>Savol va takliflaringizni yozib qoldiring! Biz albatta javob beramiz... lekin biroz vaqt olishi mumkin</p>
+            <form action="#" class="contact_form" method="post">{%csrf_token%}
+              <input class="form-control" type="text" placeholder="Ismingiz*s" name="name">
+              <input class="form-control" type="email" placeholder="Emailingiz* " name="email">
+              <textarea class="form-control" cols="30" rows="10" placeholder="Xabar*" name="message"></textarea>
+              <input type="submit" value="Xabar yuborish">
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <aside class="right_content">
+          <div class="single_sidebar">
+            <h2><span>So'nggi yangiliklar</span></h2>
+            <ul class="spost_nav">
+              {% for new in latest_news %}
+              <li>
+                <div class="media wow fadeInDown"> <a href="{{new.get_absolute_url}}" class="media-left"> <img alt="" src="{{ new.image.url }}"> </a>
+                  <div class="media-body"> <a href="{{new.get_absolute_url}}" class="catg_title"> {{ new.title }}</a> </div>
+                </div>
+              </li>
+              {% endfor %}
+              
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+{% endblock content %}
