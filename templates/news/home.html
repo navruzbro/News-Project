@@ -1,7 +1,8 @@
 {% extends 'news/base.html' %}
 {% load static %}
+{% load hitcount_tags %}
 
-{% block title %}Xabar.dev Bosh sahifa{% endblock title %}
+{% block title %}NewsFEED Bosh sahifa{% endblock title %}
 {% block content %}
 <section id="sliderSection">
     <div class="row">
@@ -26,7 +27,7 @@
              {% for new in news %}
                 <li> 
                   <div class="media"> <a href="{{new.get_absolute_url}}" class="media-left"> <img alt="" src="{{new.image}}"> </a>
-                     <div class="media-body"> <a href="{{new.get_absolute_url}}" class="catg_title">{{new.title}}</a> </div>
+                     <div class="media-body"> <a href="{{new.get_absolute_url}}" class="catg_title">{{new.title}}<p class="text-primary" style="font-weight: 300;font-size: 0.9rem;">{{new.category}}<i class="fa-regular fa-eye " style="margin-left:1rem;"></i> {% get_hit_count for new %}</p></a> </div>
                   </div> 
                 </li>
               
@@ -50,7 +51,8 @@
                 {% if forloop.first %}
                 <li>
                   <figure class="bsbig_fig"> <a href="{{local.get_absolute_url}}" class="featured_img"> <img alt="" src="{{local.image}}"> <span class="overlay"></span> </a>
-                    <figcaption> <a href="{{local.get_absolute_url}}">{{local.title}}</a> </figcaption>
+                    <figcaption> <a href="{{local.get_absolute_url}}"><p class="text-primary" style="font-weight: 300;font-size: 0.9rem;font-family:sans-serif;">{{local.category}}<i class="fa-regular fa-eye " style="margin-left:1rem;"></i> {% get_hit_count for local %}</p>
+                      {{local.title}}</a> </figcaption>
                     <p>{{ local.body | truncatewords:25  }}</p>
                   </figure>
                 </li>
@@ -64,7 +66,7 @@
                 {% if forloop.counter > 1 %}
                 <li>
                   <div class="media wow fadeInDown"> <a href="{{local_new.get_absolute_url}}" class="media-left"> <img alt="" src="{{local_new.image}}"> </a>
-                    <div class="media-body"> <a href="{{local_new.get_absolute_url}}" class="catg_title">{{local_new.title}}</a> </div>
+                    <div class="media-body"> <a href="{{local_new.get_absolute_url}}" class="catg_title">{{local_new.title}}<p class="text-primary" style="font-family:sans-serif;font-weight: 300;font-size: 0.9rem;">{{local_new.category}}<i class="fa-regular fa-eye " style="margin-left:1rem;"></i> {% get_hit_count for local_new %}</p></a> </div>
                   </div>
                 </li>
                 {% endif %}
@@ -81,7 +83,8 @@
                   {% if forloop.first %}
                   <li>
                     <figure class="bsbig_fig"> <a href="{{xorij_item.get_absolute_url}}" class="featured_img"> <img alt="" src="{{xorij_item.image}}"> <span class="overlay"></span> </a>
-                      <figcaption> <a href="{{xorij_item.get_absolute_url}}">{{ xorij_item.title }}</a> </figcaption>
+                      <figcaption> <a href="{{xorij_item.get_absolute_url}}"><p class="text-primary" style="font-weight: 300;font-size: 0.9rem;font-family:sans-serif;">{{xorij_item.category}}<i class="fa-regular fa-eye " style="margin-left:1rem;"></i> {% get_hit_count for xorij_item %}</p>
+                        {{ xorij_item.title }}</a> </figcaption>
                       <p>{{ xorij_item.body | truncatewords:25 }}</p>
                     </figure>
                   </li>
@@ -93,7 +96,7 @@
                   {% if forloop.counter > 1 %}
                   <li>
                     <div class="media wow fadeInDown"> <a href="{{xorij_item.get_absolute_url}}" class="media-left"> <img alt="" src="{{xorij_item.image}}"> </a>
-                      <div class="media-body"> <a href="{{xorij_item.get_absolute_url}}" class="catg_title">{{xorij_item.title}}</a> </div>
+                      <div class="media-body"> <a href="{{xorij_item.get_absolute_url}}" class="catg_title">{{xorij_item.title}}<p class="text-primary" style="font-weight: 300;font-size: 0.9rem;font-family:sans-serif;">{{xorij_item.category}}<i class="fa-regular fa-eye " style="margin-left:1rem;"></i> {% get_hit_count for xorij_item %}</p></a> </div>
                     </div>
                   </li>
                   {% endif %}
@@ -110,7 +113,8 @@
                   {% if forloop.first %}
                   <li>
                     <figure class="bsbig_fig wow fadeInDown"> <a href="{{texno.get_absolute_url}}" class="featured_img"> <img alt="" src="{{texno.image}}"> <span class="overlay"></span> </a>
-                      <figcaption> <a href="{{texno.get_absolute_url}}">{{ texno.title }}</a> </figcaption>
+                      <figcaption> <a href="{{texno.get_absolute_url}}"><p class="text-primary" style="font-weight: 300;font-size: 0.9rem;font-family:sans-serif;">{{texno.category}}<i class="fa-regular fa-eye " style="margin-left:1rem;"></i> {% get_hit_count for texno %}</p>
+                        {{ texno.title }}</a> </figcaption>
                       <p>{{ texno.body | truncatewords:25 }}</p>
                     </figure>
                   </li>
@@ -122,7 +126,7 @@
                   {% if forloop.counter > 1 %}
                   <li>
                     <div class="media wow fadeInDown"> <a href="{{texno.get_absolute_url}}" class="media-left"> <img alt="" src="{{texno.image}}"> </a>
-                      <div class="media-body"> <a href="{{texno.get_absolute_url}}" class="catg_title">{{texno.title}}</a> </div>
+                      <div class="media-body"> <a href="{{texno.get_absolute_url}}" class="catg_title">{{texno.title}}<p class="text-primary" style="font-weight: 300;font-size: 0.9rem;font-family:sans-serif;">{{texno.category}}<i class="fa-regular fa-eye " style="margin-left:1rem;"></i> {% get_hit_count for texno %}</p></a> </div>
                     </div>
                   </li>
                   {% endif %}
@@ -154,7 +158,7 @@
                 {% if forloop.first %}
                 <li>
                   <figure class="bsbig_fig  wow fadeInDown"> <a class="featured_img" href="pages/single_page.html"> <img src="{{sport_item.image}}" alt=""> <span class="overlay"></span> </a>
-                    <figcaption> <a href="pages/single_page.html">{{sport_item.title}}</a> </figcaption>
+                    <figcaption> <a href="pages/single_page.html"><p class="text-primary" style="font-weight: 300;font-size: 0.9rem;font-family:sans-serif;">{{sport_item.category}}<i class="fa-regular fa-eye " style="margin-left:1rem;"></i> {% get_hit_count for sport_item %}</p>{{sport_item.title}}</a> </figcaption>
                     <p>{{ sport_item.body | truncatewords:25 }}</p>
                   </figure>
                 </li>
@@ -168,7 +172,7 @@
                 {% if forloop.counter > 1 %}
                 <li>
                   <div class="media wow fadeInDown"> <a href="{{sport_item.get_absolute_url}}" class="media-left"> <img alt="" src="{{sport_item.image}}"> </a>
-                    <div class="media-body"> <a href="{{sport_item.get_absolute_url}}" class="catg_title">{{ sport_item.title }}</a> </div>
+                    <div class="media-body"> <a href="{{sport_item.get_absolute_url}}" class="catg_title">{{ sport_item.title }}<p class="text-primary" style="font-weight: 300;font-size: 0.9rem;font-family:sans-serif;">{{sport_item.category}}<i class="fa-regular fa-eye " style="margin-left:1rem;"></i> {% get_hit_count for sport_item %}</p></a> </div>
                   </div>
                 </li>
                 {% endif %}

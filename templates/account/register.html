@@ -1,0 +1,18 @@
+{% extends 'news/base.html' %}
+
+{% load static %}
+
+{% block title %}Sign UP - Ro'yxatdan o'tish {% endblock title %}
+{% block content %}
+<div class="row">
+    <div class="col offset-3 " style="margin:50px; padding:100px 0;">
+         <h3>Ro'yxatdan o'tish</h3>
+         <form method="post">{% csrf_token %}
+             {{ user_form.as_p}}
+            <button type="submit" class="btn btn-success">
+                Ro'yxatdan o'tish
+            </button>
+         </form>
+    </div>
+</div>
+{% endblock content %}

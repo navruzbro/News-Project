@@ -1,0 +1,16 @@
+{% extends 'news/base.html' %}
+{% load static  %}
+
+{% block title %}Tahrirlash > {{news.title}}{% endblock title %}
+{% block content %}
+<div >
+    <h2>{{news.title | truncatewords:3}}... nomli xabarni tahrirlamoqchimisiz?</h2>
+    <form method="post">{%csrf_token%}
+        {{form.as_p}}
+        <a href="{{news.get_absolute_url}}" class="btn btn-outline-secondary">Bekor qilish</a>
+        <button type="submit" class="btn btn-success">Tahrirlash</button>
+    </form>
+</div>
+
+
+{% endblock content %}

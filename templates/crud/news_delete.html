@@ -1,0 +1,18 @@
+{% extends 'news/base.html' %}
+
+{% load static  %}
+{% block title %}Tahrirlash > {{news.title}}{% endblock title %}
+{% block content %}
+<div >
+    <h2>{{news.title | truncatewords:3}}... nomli xabarni tahrirlamoqchimisiz?</h2>
+    <form method="post" class="my-5 my5custom">{%csrf_token%}
+        <a href="{{news.get_absolute_url}}" class="btn btn-close">Bekor qilish</a>
+        <button type="submit" class="btn btn-danger">O'chirish</button>
+    </form>
+    <div class="my-5">
+
+    </div>
+</div>
+
+
+{% endblock content %}

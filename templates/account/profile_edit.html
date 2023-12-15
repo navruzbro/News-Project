@@ -1,0 +1,15 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% block title %}{{user.username}} profili - tahrirlash{% endblock title %}
+{% block content %}
+<div class="row">
+    <div class="col offset-3 " style="margin:50px; padding:100px 0;">
+        <h3>{{user.username}} malulumotlarini tahrirlash</h3>
+        <form method="post" enctype="multipart/form-data">{%csrf_token%}
+            {{user_form.as_p}}
+            {{profile_form.as_p}}
+            <button type="submit" class="btn btn-success">Saqlash</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

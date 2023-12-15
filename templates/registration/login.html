@@ -1,0 +1,18 @@
+{% extends 'news/base.html' %}
+{% load static %}
+
+{% block title %}Login - xabar.dev{% endblock title %}
+{% block content %}
+<div class="row">
+    <div class="col offset-3 " style="margin:50px;">
+        <h3>Veb saytga kirish - Login</h3>
+        <p>Iltimos, saytga kirish uchun quyidagi formani to'ldiring!</p>
+        <form method="post">{%csrf_token%}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-success " style="background-color: #d083cf;border-radius:5px;">Log in</button>
+            <a style="color:#00509d" href="{% url 'password_reset' %}">Parolni unutdingizmi?</a>
+        </form>
+        <a style="color:#00509d" href="{% url 'signup' %}">Ro'yxatdan o'tish</a>
+    </div>
+</div>
+{% endblock content %}

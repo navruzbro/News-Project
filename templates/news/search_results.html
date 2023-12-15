@@ -1,0 +1,64 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% load hitcount_tags %}
+
+{% block title %} Qidiruv natijalari {% endblock title %}
+{% block content %}
+
+<!--Top section-->
+<section id="sliderSection">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">   
+        <div class="single_post_content">
+            <h2><span>Qidiruv natijalari</span></h2>
+            <div class="single_post_content_left">
+            <ul class="business_catgnav  wow fadeInDown">
+                {% for local in all_news %}
+                {% if forloop.first %}
+                <li>
+                <figure class="bsbig_fig"> <a href="{{local.get_absolute_url}}" class="featured_img"> <img alt="" src="{{local.image.url}}"> <span class="overlay"></span> </a>
+                    <figcaption> <a href="{{local.get_absolute_url}}"><p class="text-primary" style="font-weight: 300;font-size: 0.9rem;font-family:sans-serif;">{{local.category}}<i class="fa-regular fa-eye " style="margin-left:1rem;"></i> {% get_hit_count for local %}</p>{{local.title}}</a> </figcaption>
+                    <p>{{ local.body | truncatewords:25  }}</p>
+                </figure>
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            </div>
+            <div class="single_post_content_right">
+            <ul class="spost_nav">
+                {% for local_new in all_news %}
+                {% if forloop.counter > 1 %}
+                <li>
+                <div class="media wow fadeInDown"> <a href="{{local_new.get_absolute_url}}" class="media-left"> <img alt="" src="{{local_new.image.url}}"> </a>
+                    <div class="media-body"> <a href="{{local_new.get_absolute_url}}" class="catg_title">{{local_new.title}}<p class="text-primary" style="font-weight: 300;font-size: 0.9rem;font-family:sans-serif;">{{local_new.category}}<i class="fa-regular fa-eye " style="margin-left:1rem;"></i> {% get_hit_count for local_new %}</p></a> </div>
+                </div>
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <div class="latest_post">
+          <h2><span>So'nggi yangiliklar</span></h2>
+          <div class="latest_post_container">
+            <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
+            <ul class="latest_postnav">
+             {% for new in latest_news %}
+                <li> 
+                  <div class="media"> <a href="{{new.get_absolute_url}}" class="media-left"> <img alt="" src="{{new.image.url}}"> </a>
+                     <div class="media-body"> <a href="{{new.get_absolute_url}}" class="catg_title">{{new.title}}</a> </div>
+                  </div> 
+                </li>
+              
+             {% endfor %}
+            </ul>
+            <div id="next-button"><i class="fa  fa-chevron-down"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+{% endblock content %}

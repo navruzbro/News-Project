@@ -1,14 +1,18 @@
 {% extends 'news/base.html' %}
 {% load static %}
-{% block title %} Texno yangiliklar {% endblock title %}
+{% load hitcount_tags %}
+
+
+{% block title %} Sport yangiliklari {% endblock title %}
 {% block content %}
 
 <!--Top section-->
+
 <section id="sliderSection">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-8">
          <div class="slick_slider">
-         {% for new in texno_yangiliklar %}
+         {% for new in sport_yangiliklari %}
           <div class="single_iteam" style="z-index:100;"> <a href="{{new.get_absolute_url}}"> <img src="{{new.image.url}}" alt=""></a>
             <div class="slider_article">
               <h2><a class="slider_tittle" href="{{new.get_absolute_url}}">{{ new.title | truncatewords:5 }}...</a></h2>
@@ -20,14 +24,14 @@
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4">
         <div class="latest_post">
-          <h2><span>Texno yangiliklar</span></h2>
+          <h2><span>Mahalliy yangiliklar</span></h2>
           <div class="latest_post_container">
             <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
             <ul class="latest_postnav">
-             {% for new in texno_yangiliklar %}
+             {% for new in sport_yangiliklari %}
                 <li> 
                   <div class="media"> <a href="{{new.get_absolute_url}}" class="media-left"> <img alt="" src="{{new.image.url}}"> </a>
-                     <div class="media-body"> <a href="{{new.get_absolute_url}}" class="catg_title">{{new.title}}</a> </div>
+                     <div class="media-body"> <a href="{{new.get_absolute_url}}" class="catg_title">{{new.title}}<p class="text-primary" style="font-weight: 300;font-size: 0.9rem;font-family:sans-serif;">{{new.category}}<i class="fa-regular fa-eye " style="margin-left:1rem;"></i> {% get_hit_count for new %}</p></a> </div>
                   </div> 
                 </li>
               

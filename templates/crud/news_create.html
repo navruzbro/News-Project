@@ -1,0 +1,16 @@
+{% extends 'news/base.html' %}
+{% load static  %}
+
+{% block title %}Yangilik yaratish{% endblock title %}
+{% block content %}
+<div >
+    <h2>Yangilik yaratish</h2>
+    <form method="post" enctype="multipart/form-data">{%csrf_token%}
+        {{form.as_p}}
+        <a href="{{news.get_absolute_url}}" class="btn btn-outline-secondary">Bekor qilish</a>
+        <button type="submit" class="btn btn-success">Yaratish</button>
+    </form>
+</div>
+
+
+{% endblock content %}

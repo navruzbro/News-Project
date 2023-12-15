@@ -1,0 +1,54 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% block title %}{{user.username}} profile{% endblock title %}
+{% block content %}
+<section id="contentSection">
+    <div class="row">
+      <div class="col-12">
+        <div class="left_content">
+          <div class="single_post_content">
+            <h2><span>{{user.username}}</span></h2>
+            <div class="profile_container_pink">
+                <div class="profile_img">
+                    <img src="{{profile.photo.url}}" class="img-fluid" alt="profile_img">
+                </div>
+                <div class="profile_name">
+                    {{user.first_name}}   {{user.last_name}}
+                </div><br>
+                
+            </div>
+            <div class="profile_container">
+                <div class="profile-btn">
+                    <a href="{% url 'edit_profile' %}" >Malumotlarni o'zgartirish</a>
+                    <a  href="{% url 'password_change' %}" >Parolni o'zgartirish</a>
+                    <a href="{% url 'login' %}" >Boshqa akkuntdan kirish</a>
+                    <a class="btn-red " href="{% url 'logout' %}" >Chiqib ketish - Logout</a>
+                    
+                </div>
+                <p class="profile_info"><span class="profile_inf_name">Username</span><br>  @{{user.username}}</p><br>
+                <p class="profile_info"><span class="profile_inf_name">Email</span><br>  {{user.email}}</p><br>
+                <p class="profile_info"><span class="profile_inf_name">Tug'ilgan sana</span><br> {{profile.date_of_birth}}</p><br>
+                <p class="profile_info"><span class="profile_inf_name">Tarjimayi hol</span><br> {{profile.bio}}</p><br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+<!-- <div class="row">
+    <div class="col offset-3 " style="margin:50px;">
+
+        <h3 >Xush kelibsiz, {{user.username}}</h3>
+        <h5 style="border-top: 1px solid black; margin:10px;padding:10px;">Siz haqingizda: </h5>
+            <label style=" margin:5px;padding-left:20px;width:110px;" >     Username:</label><input style="background: transparent;border:1px solid black;"value="{{user.username}}" readonly placeholder="*kiritilmagan..."><br>
+            <label style=" margin:5px;padding-left:20px;width:110px;" >     Email:</label><input style="background: transparent;border:1px solid black;" value="{{user.email}}" readonly placeholder="*kiritilmagan..."><br>
+            <label style=" margin:5px;padding-left:20px;width:110px;">     Ismingiz:</label><input style="background: transparent;border:1px solid black;"  value="{{user.first_name}}" readonly placeholder="*kiritilmagan..."><br>
+            <label style=" margin:5px;padding-left:20px;width:110px;">     Familiyangiz:</label><input style="background: transparent;border:1px solid black;" value="{{user.last_name}}" readonly placeholder="*kiritilmagan..."><br>
+            <label  style="border-top: 1px solid black; margin-left:10px;padding:10px;"><a href="{% url 'edit_profile' %}" >Profilni tahrirlash</a></label><br>
+            <label  style="border-top: 1px solid black; margin-left:10px;padding:10px;"><a href="{% url 'password_change' %}" >Parolni almashtirish</a></label><br>
+            <label  style="border-top: 1px solid black; margin-left:10px;padding:10px;"><a href="{% url 'login' %}" >Boshqa akkauntdan kirish</a></label><br>
+            <label  style="border-top: 1px solid black; margin-left:10px;padding:10px;"><a style="color:red" href="{% url 'logout' %}" >Chiqib ketish</a></label><br>
+     </div>  
+</div> -->
+
+{% endblock content %}

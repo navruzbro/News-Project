@@ -1,5 +1,7 @@
 {% extends 'news/base.html' %}
 {% load static %}
+{% load hitcount_tags %}
+
 {% block title %} Mahalliy yangiliklar {% endblock title %}
 {% block content %}
 
@@ -27,7 +29,7 @@
              {% for new in mahalliy_yangiliklar %}
                 <li> 
                   <div class="media"> <a href="{{new.get_absolute_url}}" class="media-left"> <img alt="" src="{{new.image.url}}"> </a>
-                     <div class="media-body"> <a href="{{new.get_absolute_url}}" class="catg_title">{{new.title}}</a> </div>
+                     <div class="media-body"> <a href="{{new.get_absolute_url}}" class="catg_title">{{new.title}}<p class="text-primary" style="font-weight: 300;font-size: 0.9rem;font-family:sans-serif;">{{new.category}}<i class="fa-regular fa-eye " style="margin-left:1rem;"></i> {% get_hit_count for new %}</p></a> </div>
                   </div> 
                 </li>
               
@@ -38,5 +40,5 @@
         </div>
       </div>
     </div>
-  </section>
+</section>
 {% endblock content %}

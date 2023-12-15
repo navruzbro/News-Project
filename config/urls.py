@@ -23,8 +23,9 @@ from django.conf.urls.static import  static
 activate('uz-uz')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin-advanced/', admin.site.urls),
     path('', include("news_app.urls")),
+    path('accounts/', include("accounts.urls")),
 ]
 
 if settings.DEBUG:

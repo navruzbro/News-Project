@@ -4,3 +4,25 @@
     padding:1rem;
    
 }
+.btn-custom{
+    color: #d083cf!important;
+}
+.my5custom{
+    margin-bottom:100px!important;
+}
+
+.btn-success-custom{
+    border-radius:4px;
+    background-color: #d083cf;
+    transition: all 0.4s ease-in-out;
+    padding: 5px 10px;
+
+}
+.btn-success-custom:hover{
+    background-color: white;
+    border:1px solid #d083cf;
+}
+.s234ks{
+    color:red!important;
+    font-size:3rem;
+}
