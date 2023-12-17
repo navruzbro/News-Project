@@ -117,7 +117,7 @@ class LocalNewsView(ListView):
     context_object_name = 'mahalliy_yangiliklar'
 
     def get_queryset(self):
-        news = News.published.all().filter(category__name="mahalliy").order_by("-publish_time")[:5]
+        news = News.published.all().filter(category__name="mahalliy").order_by("-publish_time")[:15]
         return news
 
 
@@ -127,7 +127,7 @@ class ForeignNewsView(ListView):
     context_object_name = 'xorijiy_yangiliklar'
 
     def get_queryset(self):
-        news = News.published.all().filter(category__name="xorij").order_by("-publish_time")[:5]
+        news = News.published.all().filter(category__name="xorij").order_by("-publish_time")[:15]
         return news
 
 
@@ -137,7 +137,7 @@ class TechnoNewsView(ListView):
     context_object_name = 'texno_yangiliklar'
 
     def get_queryset(self):
-        news = News.published.all().filter(category__name="texnologiya").order_by("-publish_time")[:5]
+        news = News.published.all().filter(category__name="texnologiya").order_by("-publish_time")[:15]
         return news
 
 
@@ -147,7 +147,7 @@ class SportNewsView(ListView):
     context_object_name = 'sport_yangiliklari'
 
     def get_queryset(self):
-        news = News.published.all().filter(category__name="sport").order_by("-publish_time")[:5]
+        news = News.published.all().filter(category__name="sport").order_by("-publish_time")[:15]
         return news
 
 

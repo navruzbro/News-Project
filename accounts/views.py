@@ -42,18 +42,18 @@ def user_register(request):
                 user_form.cleaned_data['password']
             )
             new_user.save()
-            Profile.objects.create(user=new_user)
             context = {
                 'new_user':new_user
             }
             return render(request, 'account/register_done.html', context)
     else:
         user_form  = UserRegistrationForm()
+        profile_form = Profile()
         success_url = reverse_lazy('login')
         context = {
-            'user_form':user_form
+            'user_form':user_form,
         }
-        return render(request, 'account/register.html', {'user_form': user_form})
+        return render(request, 'account/register.html', context)
     
 @login_required
 def edit_user(request):

@@ -9,6 +9,7 @@
          <h3>Ro'yxatdan o'tish</h3>
          <form method="post">{% csrf_token %}
              {{ user_form.as_p}}
+             {{ profile_form.as_p}}
             <button type="submit" class="btn btn-success">
                 Ro'yxatdan o'tish
             </button>
